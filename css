@@ -1,0 +1,40 @@
+body {
+    background-color: #1a1a2e; /* Azul bem escuro, como o túnel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+#game-container {
+    position: relative;
+    border-bottom: 3px solid #0f0f18; /* Chão do túnel */
+    overflow: hidden;
+}
+
+#game-canvas {
+    background-color: #1a1a2e; /* Mesma cor do body, para o caso da imagem falhar */
+    display: block;
+}
+
+#score-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 24px;
+    color: #e0e1dd;
+}
+
+#message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    color: #e0e1dd;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000;
+}
