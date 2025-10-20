@@ -53,8 +53,15 @@ function drawBackground() {
     ctx.drawImage(backgroundImage, backgroundX + GAME_WIDTH, 0, GAME_WIDTH, GAME_HEIGHT);
 }
 
+// --- FUNÇÃO DE TESTE ---
 function drawPlayer() {
-    // Verifica se a imagem está carregada E tem um tamanho válido
+    // Este é um teste. Vamos desenhar um quadrado rosa OBRIGATORIAMENTE.
+    // Se isso aparecer, sabemos que o problema é o ARQUIVO DA IMAGEM.
+    
+    ctx.fillStyle = '#FF00FF'; // ROSA BRILHANTE
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+    
+    // (Ainda tentamos desenhar a Coraline por cima, mas o quadrado rosa vai aparecer de qualquer forma)
     if (playerSpriteSheet.complete && playerSpriteSheet.naturalWidth > 0) {
         ctx.imageSmoothingEnabled = false; 
         ctx.drawImage(
@@ -65,12 +72,6 @@ function drawPlayer() {
             player.x, player.y, 
             player.width, player.height
         );
-    } else {
-        // --- TESTE DE DIAGNÓSTICO ---
-        // Se a imagem falhar, desenha um quadrado ROSA BRILHANTE
-        console.warn("TESTE: Desenhando quadrado de fallback ROSA. A imagem 'coraline_sprite.png' FALHOU ao carregar ou é inválida.");
-        ctx.fillStyle = '#FF00FF'; // ROSA BRILHANTE
-        ctx.fillRect(player.x, player.y, player.width, player.height);
     }
 }
 
@@ -200,8 +201,8 @@ function gameLoop() {
     
     // Ordem de desenho correta
     drawBackground();
-    drawPlayer();
-    drawDangers();   
+    drawPlayer(); // <-- Agora VAI desenhar um quadrado rosa
+    drawDangers();
 
     // Atualiza a lógica
     updateBackground();
@@ -249,14 +250,12 @@ function onImageLoad(e) {
     imagesLoaded++;
     console.log(`Imagem carregada: ${filename} (${imagesLoaded}/${totalImages})`); 
     
-    // --- TESTE DE DIAGNÓSTICO ---
     if (filename === 'coraline_sprite.png') {
         console.log(`TESTE: 'coraline_sprite.png' carregada. Largura: ${playerSpriteSheet.naturalWidth}px, Altura: ${playerSpriteSheet.naturalHeight}px`);
         if (playerSpriteSheet.naturalWidth === 0) {
             console.error("ERRO GRAVE: A imagem 'coraline_sprite.png' carregou mas tem LARGURA 0. O arquivo está corrompido ou é inválido.");
         }
     }
-    // -------------------------
     
     if (imagesLoaded === totalImages) {
         console.log("Todas as imagens carregadas. Pronto para iniciar!"); 
@@ -277,6 +276,5 @@ playerSpriteSheet.onerror = onImageError;
 backgroundImage.onerror = onImageError;
 
 // 2. Define o .src para disparar o carregamento
-
-backgroundImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/ceu.png'; // <-- Verifique se o nome está correto
-playerSpriteSheet.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/coraline_sprite.png'; // <-- Nome do arquivo do link
+playerSpriteSheet.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/coraline_sprite.png';
+backgroundImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/ceu.png';
