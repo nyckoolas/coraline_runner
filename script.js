@@ -435,5 +435,5 @@ backgroundImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/ceu.pn
 handObstacleImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/MAO2.png';
 batDogImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/cachorro.png';
 floorImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/chaopan.png';
-menuImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/menu%20pronto.png';
+menuImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/menutitulo.png';
 gameOverImage.src = 'https://uploads.onecompiler.io/43s2gp4fr/43znayj4u/16%20Sem%20T%C3%ADtulo_20251022144045.png';
