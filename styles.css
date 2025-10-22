@@ -1,40 +1,50 @@
-body {
-    background-color: #1a1a2e; /* Azul bem escuro, como o túnel */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* --- TELA CHEIA E RESET --- */
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+}
+
+body {
     font-family: 'Courier New', Courier, monospace;
     color: white;
 }
 
+/* --- CONTAINER PRINCIPAL DO JOGO --- */
 #game-container {
     position: relative;
-    border-bottom: 3px solid #0f0f18; /* Chão do túnel */
     overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a2e;
 }
 
+/* --- CANVAS ONDE O JOGO É DESENHADO --- */
 #game-canvas {
-    background-color: #1a1a2e; /* Mesma cor do body, para o caso da imagem falhar */
     display: block;
+    width: 100%;
+    height: 100%;
 }
 
-#score-container {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    font-size: 24px;
-    color: #e0e1dd;
-}
-
+/* --- MENSAGEM CENTRAL (Game Over / Iniciar) --- */
 #message {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 28px;
+    font-size: 32px; /* Aumentei um pouco para Nosifer */
     color: #e0e1dd;
     text-align: center;
     text-shadow: 2px 2px 4px #000;
+    z-index: 10;
+    /* --- CORREÇÃO: Usa a fonte Nosifer --- */
+    font-family: 'Nosifer', cursive, sans-serif;
+    /* ------------------------------------- */
 }
+
+/* --- CORREÇÃO: Importa a fonte Nosifer do Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+/* -------------------------------------------------------- */
