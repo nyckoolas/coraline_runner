@@ -181,7 +181,7 @@ function drawGameOverScreen() {
             ctx.fillText(messageElement.textContent, GAME_WIDTH / 2, GAME_HEIGHT / 2 + 60);
         } else {
              ctx.font = `${otherTextFontSize} 'Nosifer', cursive, sans-serif`; ctx.fillStyle = "#FF0000";
-             ctx.fillText("Pressione Espaço para Reiniciar", GAME_WIDTH / 2, GAME_HEIGHT / 2 + 100);
+             ctx.fillText("Pressione ENTER para tentar novamente", GAME_WIDTH / 2, GAME_HEIGHT / 2 + 100);
         }
     } else {
         ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT); ctx.fillStyle = 'black'; ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
@@ -368,20 +368,33 @@ window.addEventListener('keydown', (e) => {
     if (e.code === 'Space' || e.keyCode === 32) {
         console.log("Barra de espaço detectada!");
         e.preventDefault();
-        if (showMenuScreen && isGameReady) {
+        if (showMenuScreen && isGameReady) {  
             console.log("Iniciando jogo a partir do menu...");
             showMenuScreen = false;
-            resetGame();
-        } else if (showGameOverScreen && isGameReady) {
-            console.log("Reiniciando jogo após Game Over...");
             resetGame();
         } else if (!isGameOver && !showMenuScreen && !showGameOverScreen && !player.isJumping) {
             console.log("Jogador pulou!");
             player.isJumping = true; player.velocityY = -27;
             player.y = PLAYER_Y_INITIAL; // Tira o offset de balanço ao pular
+            
+            
         }
     }
+// --- NOVO: Ação de Reiniciar com Enter ---
+    if (e.key === 'Enter' || e.keyCode === 13) { // <<< Detecta ENTER
+         console.log("Enter detectado!");
+         e.preventDefault(); // Impede outras ações do Enter
+
+         // Se Game Over -> Reinicia com Enter
+         if (showGameOverScreen && isGameReady) { // <<< CONDIÇÃO MOVIDA PARA CÁ
+            console.log("Reiniciando jogo após Game Over com Enter...");
+            resetGame(); // <<< AÇÃO DE REINICIAR AQUI
+         }
+    }
+    // --- Fim da Ação do Enter ---
+
 });
+console.log("Listeners configurados OK.");
 
 // --- Gerenciador de carregamento ---
 messageElement.textContent = "Carregando...";
