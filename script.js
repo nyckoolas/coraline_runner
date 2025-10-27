@@ -352,7 +352,7 @@ function gameOver() {
     if (finalScore > highScore) {
         highScore = finalScore;
         saveHighScore();
-        messageElement.textContent = `NOVO RECORDE: ${highScore}!`;
+        messageElement.textContent = `NOVO RECORDE: ${highScore}! pressione ENTER para tentar novamente`;
     } else {
         messageElement.textContent = `Pontos: ${finalScore}. Pressione Espaço.`;
     }
